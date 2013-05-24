@@ -1,0 +1,15 @@
+=simple_form_for @product do |f|
+  %p
+    =f.input :name, :required => true
+  %p
+    =f.input :price, :required => true
+  %p
+    =f.file_field :files, :id => "files"
+  %p
+    =f.hidden_field :url, :required => true
+  %p
+    .progress-bar
+      .percent
+      .status
+  %p
+    =f.button :submit, :id => "new_product_submit"
