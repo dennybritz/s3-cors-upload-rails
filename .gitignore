@@ -15,4 +15,4 @@
 /tmp
 
 .env
-.Procfile
+Procfile
