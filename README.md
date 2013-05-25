@@ -9,7 +9,6 @@
     <CORSConfiguration xmlns="http://s3.amazonaws.com/doc/2006-03-01/">
         <CORSRule>
             <AllowedOrigin>*</AllowedOrigin>
-            <AllowedOrigin>http://localhost:3000</AllowedOrigin>
             <AllowedMethod>PUT</AllowedMethod>
             <MaxAgeSeconds>3000</MaxAgeSeconds>
             <AllowedHeader>*</AllowedHeader>
