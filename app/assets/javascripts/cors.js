@@ -1,8 +1,3 @@
-function setProgress(progress, str) {
-  $(".progress-bar .percent").text(progress + "%") 
-  $(".progress-bar .status").text(str)
-}
-
 function createCORSRequest(method, url) 
 {
   var xhr = new XMLHttpRequest();
@@ -59,14 +54,6 @@ function executeOnSignedUrl(file, callback)
   };
 
   xhr.send();
-}
-
-function uploadFile(file)
-{
-  executeOnSignedUrl(file, function(signedURL) 
-  {
-    uploadToS3(file, signedURL);
-  });
 }
 
 /**

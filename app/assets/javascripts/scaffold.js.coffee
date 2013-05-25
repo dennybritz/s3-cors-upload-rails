@@ -1,0 +1,4 @@
+$ ->
+  $(":file").filestyle(
+    icon: false
+  )

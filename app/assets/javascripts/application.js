@@ -11,9 +11,10 @@
 // GO AFTER THE REQUIRES BELOW.
 //
 //= require jquery
+//= require jquery_ujs
+//= require bootstrap
+//= require bootstrap-filestyle
+//
+//= require scaffold
+//= require products
 //= require cors
-//= require aws
-// require jquery_ujs
-// require_tree .
-
-

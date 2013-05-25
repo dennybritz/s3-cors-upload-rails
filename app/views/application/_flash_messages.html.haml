@@ -1,0 +1,12 @@
+-if flash[:notice]
+  .alert.alert-notice.alert-message
+    =link_to "#", :class => "close", :data => {:dismiss => "alert"} do
+      &times;
+    %i.icon-info-sign
+    =flash[:notice]
+-if flash[:error]
+  .alert.alert-error.alert-message
+    =link_to "#", :class => "close", :data => {:dismiss => "alert"} do
+      &times;
+    %i.icon-warning-sign
+    =flash[:error]
