@@ -23,3 +23,29 @@ The application can be configured via the following environment variables.
 - `AWS_ACCESS_KEY_ID`
 - `AWS_SECRET_ACCESS_KEY`
 - `AWS_S3_BUCKET`
+
+
+## Code overview
+
+The application flow is as follows:
+1. [Client] When the user chooses a file, a callback (defined in `app/assets/javascripts/products.js`) contacts the server to request a signed URL that can be used for uploading. 
+2. [Server] AWSController generates a signed URL according to http://docs.aws.amazon.com/AmazonS3/latest/dev/RESTAuthentication.html and returns it using a JSON hash.
+3. [Client] The `uploadToS3` function (defined in `app/assets/javascripts/cors.js`), takes the signed URL and the file, and PUTs the file onto S3. 
+4. [Client] Once the upload is finished, the URL of the uploaded file is appended to the form as a hidden field.
+5. [Client] When the user submits the form, the fiel field is removed (to avoid a second upload), and only name, price and the file URL are POSTed to the server. 
+6. [Server] A new product record is created.  
+
+The most important files are are:
+
+- `app/helpers/aws_helper` - Builds the AWS authentication signature as described in http://docs.aws.amazon.com/AmazonS3/latest/dev/RESTAuthentication.html. It required the Amazon keys, as well as options about the request (request type, resource, etc).
+- `app/controllers/aws_controller` - Given a filename and content type, returns a JSON of the form:
+    
+    ```JSON
+    {
+      "put_url": [The *signed* URL that must be used to make the request from the client side],
+      "file_url": [The url the file will be uploaded to. A random number is appended to the file name to avoid name collisions.]
+    }
+    ```
+- `app/assets/javascripts/cors.js` - Performs the actual upload using an XMLHttpRequest. Required the signed URL, and the file to perform the request.
+- `app/assets/javascripts/products.js` - Handles UI callbacks, such as updating the progress bar. Also handles the file-upload callback. When the user chooses a file, the server is contacted to generate a signed URL, which is then passed to the CORS script described above to complete the download.
+
