@@ -48,5 +48,5 @@ The most important files are are:
     }
     ```
 - `app/assets/javascripts/cors.js` - Performs the actual upload using an XMLHttpRequest. Required the signed URL, and the file to perform the request.
-- `app/assets/javascripts/products.js` - Handles UI callbacks, such as updating the progress bar. Also handles the file-upload callback. When the user chooses a file, the server is contacted to generate a signed URL, which is then passed to the CORS script described above to complete the download.
+- `app/assets/javascripts/products.js` - Handles UI callbacks, such as updating the progress bar. Also handles the file-upload callback. When the user chooses a file, the server is contacted to generate a signed URL, which is then passed to the CORS script described above to complete the upload.
 
