@@ -28,6 +28,7 @@ The application can be configured via the following environment variables.
 ## Code overview
 
 The application flow is as follows:
+
 1. [Client] When the user chooses a file, a callback (defined in `app/assets/javascripts/products.js`) contacts the server to request a signed URL that can be used for uploading. 
 2. [Server] AWSController generates a signed URL according to http://docs.aws.amazon.com/AmazonS3/latest/dev/RESTAuthentication.html and returns it using a JSON hash.
 3. [Client] The `uploadToS3` function (defined in `app/assets/javascripts/cors.js`), takes the signed URL and the file, and PUTs the file onto S3. 
