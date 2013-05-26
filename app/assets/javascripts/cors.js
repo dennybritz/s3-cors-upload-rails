@@ -17,45 +17,6 @@ function createCORSRequest(method, url)
   return xhr;
 }
 
-function handleFileSelect(evt) 
-{
-  setProgress(0, 'Upload started.');
-
-  var files = evt.target.files; 
-
-  var output = [];
-  for (var i = 0, f; f = files[i]; i++) 
-  {
-    uploadFile(f);
-  }
-}
-
-/**
- * Execute the given callback with the signed response.
- */
-function executeOnSignedUrl(file, callback)
-{
-  var xhr = new XMLHttpRequest();
-  xhr.open('GET', 'signput.php?name=' + file.name + '&type=' + file.type, true);
-
-  // Hack to pass bytes through unprocessed.
-  xhr.overrideMimeType('text/plain; charset=x-user-defined');
-
-  xhr.onreadystatechange = function(e) 
-  {
-    if (this.readyState == 4 && this.status == 200) 
-    {
-      callback(decodeURIComponent(this.responseText));
-    }
-    else if(this.readyState == 4 && this.status != 200)
-    {
-      setProgress(0, 'Could not contact signing script. Status = ' + this.status);
-    }
-  };
-
-  xhr.send();
-}
-
 /**
  * Use a CORS call to upload the given file to S3. Assumes the url
  * parameter has been signed and is accessible for upload.
