@@ -43,8 +43,8 @@ The most important files are are:
     
     ```JSON
     {
-      "put_url": [The *signed* URL that must be used to make the request from the client side],
-      "file_url": [The url the file will be uploaded to. A random number is appended to the file name to avoid name collisions.]
+      "put_url": "The *signed* URL that must be used to make the request from the client side]",
+      "file_url": "The url the file will be uploaded to. A random number is appended to the file name to avoid name collisions."
     }
     ```
 - `app/assets/javascripts/cors.js` - Performs the actual upload using an XMLHttpRequest. Required the signed URL, and the file to perform the request.
