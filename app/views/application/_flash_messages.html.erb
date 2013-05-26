@@ -1,0 +1,17 @@
+<% if flash[:notice] %>
+  <div class="alert alert-notice alert-message">
+    <%= link_to "#", :class => "close", :data => {:dismiss => "alert"} do %>
+      &times;
+    <% end %>
+    <%= flash[:notice] %>
+  </div>
+<% end %>
+
+<% if flash[:error] %>
+  <div class="alert alert-error alert-message">
+    <%= link_to "#", :class => "close", :data => {:dismiss => "alert"} do %>
+      &times;
+    <% end %>
+    <%= flash[:error] %>
+  </div>
+<% end %>
