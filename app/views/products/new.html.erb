@@ -1,0 +1,23 @@
+<%= simple_form_for @product, :html => {:class => "form-horizontal"} do |f| %>
+  
+  <%= f.input :name, :required => true, :input_html => {:required => "required"} %>
+  <%= f.input :price, :required => true, :input_html => {:required => "required"} %>
+  <%= f.hidden_field :url, :required => true %>
+  <%= f.input :file do %>
+    <%= f.file_field :files, :id => "product_file", :accept => ".pdf,.mobi,.epub" %>
+    <br/>
+    <br/>
+    <div class="row-fluid" id="product-upload-progress">
+      <div class="span4">
+        <div class="progress progress-success">
+          <div class="bar">
+          </div>
+        </div>
+      </div>
+      <div class="span4 text"/>
+    </div>
+    <% end %>
+    <div class="form-actions">
+      <%= f.button :submit, :id => "new_product_submit", :class => "btn btn-primary" %>
+    </div>
+<% end %>
