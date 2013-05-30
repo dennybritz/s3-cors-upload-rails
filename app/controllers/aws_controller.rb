@@ -10,7 +10,7 @@ class AwsController < ApplicationController
     content_type = "application/epub+zip" if filename.ends_with?(".epub")
     content_type = "application/x-mobipocket-ebook" if filename.ends_with?(".mobi")
 
-    puts content_type
+    
     resource_endpoint = "http://#{ENV["AWS_S3_BUCKET"]}.s3.amazonaws.com/#{filename}"
     options = {
         :http_verb => "PUT", 
@@ -18,9 +18,9 @@ class AwsController < ApplicationController
         :resource => "/#{ENV["AWS_S3_BUCKET"]}/#{filename}",
         :content_type => content_type
       }
-    puts options
+    
     url = AwsHelper.build_s3_upload_url(resource_endpoint, ENV["AWS_ACCESS_KEY_ID"], ENV["AWS_SECRET_ACCESS_KEY"], options)
-    render :json => {:put_url => url, :file_url => resource_endpoint, :content_type => content_type}.to_json
+    render :json => {:put_url => url, :file_url => resource_endpoint, :content_type => content_type}
   end
 
 end
