@@ -25,6 +25,15 @@ The application can be configured via the following environment variables.
 - `AWS_S3_BUCKET`
 
 
+## General Flow
+
+This project uses client-side JavaScript and server-side Ruby. In general, the completed file-upload process follows these steps:
+
+1. A file is selected for upload by the user in their web browser;
+2. JavaScript is then responsible for making a request to your web application, which produces a temporary signature with which to sign the upload request;
+3. The temporary signed request is returned to the browser in JSON format;
+4. JavaScript then uploads the file directly to Amazon S3 using the signed request supplied by your Rails application.
+
 ## Code overview
 
 The application flow is as follows:

@@ -11,9 +11,9 @@ class AwsController < ApplicationController
         :resource => "/#{ENV["AWS_S3_BUCKET"]}/#{filename}",
         :content_type => params[:content_type]
       }
-    puts options
+    # puts options
     url = AwsHelper.build_s3_upload_url(resource_endpoint, ENV["AWS_ACCESS_KEY_ID"], ENV["AWS_SECRET_ACCESS_KEY"], options)
-    render :json => {:put_url => url, :file_url => resource_endpoint}.to_json
+    render :json => {:put_url => url, :file_url => resource_endpoint}
   end
 
 end

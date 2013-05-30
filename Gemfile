@@ -19,7 +19,6 @@ end
 
 # gem "activeadmin"
 gem "bcrypt-ruby"
-gem "haml-rails"
 gem "jquery-rails"
 gem "simple_form"
 # gem "twitter-bootstrap-rails"
