@@ -21,7 +21,7 @@ function createCORSRequest(method, url)
  * Use a CORS call to upload the given file to S3. Assumes the url
  * parameter has been signed and is accessible for upload.
  */
-function uploadToS3(file, url)
+function uploadToS3(file, url, content_type)
 {
   var xhr = createCORSRequest('PUT', url);
   if (!xhr) 
@@ -56,7 +56,7 @@ function uploadToS3(file, url)
       }
     };
 
-    xhr.setRequestHeader('Content-Type', file.type);
+    xhr.setRequestHeader('Content-Type', content_type);
     //xhr.setRequestHeader('x-amz-acl', 'public-read');
     xhr.send(file);
   }
