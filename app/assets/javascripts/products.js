@@ -1,6 +1,6 @@
 window.uploadFile = function(file) {
     console.log(file)
-    return $.getJSON("/generate_signed_s3_url?filename=" + file.name + "&content_type=" + file.type, function(data) {
+    return $.getJSON("/generate_signed_s3_url?filename=" + file.name.replace(/ /g,"_") + "&content_type=" + file.type, function(data) {
       uploadToS3(file, data.put_url, data.content_type);
       return $("#product_url").val(data.file_url);
     });
