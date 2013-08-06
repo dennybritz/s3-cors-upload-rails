@@ -10,13 +10,13 @@ window.setProgress = function(progress, str) {
   $(".progress .bar").css("width", progress + "%");
   $("#product-upload-progress .text").text(str);
   if (progress === 100) {
-    return $("#new_product_submit").show();
+    return $("#new_product_submit").disabled=false;
   }
 };
 
 $(function() {
   $("#product-upload-progress").hide();
-  $("#new_product_submit").hide();
+  $("#new_product_submit").disabled=true;
   $("#new_product_submit").click(function() {
     $("#product_file").remove();
     return true;
